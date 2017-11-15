@@ -10,17 +10,18 @@ region = "eu-west-1"
 data "aws_ami" "ubuntu" {
   most_recent = true
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
+#  filter {
+#    name   = "name"
+#    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+#  }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
 
-  owners = ["099720109477"] # Canonical
+  owners = ["self"]
+#  owners = ["099720109477"] # Canonical
 }
 
 resource "aws_elb" "web_elb" {
@@ -48,9 +49,10 @@ resource "aws_elb" "web_elb" {
 
 resource "aws_launch_configuration" "web" {
   name          = "web_server_config"
+#  image_id      = "ami-801ab2f9"
   image_id      = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-  user_data              = "${data.template_file.webapp.rendered}"
+#  user_data              = "${data.template_file.webapp.rendered}"
   security_groups        = ["${aws_security_group.allow_ssh.id}"]
   key_name               = "gitBen"
 }

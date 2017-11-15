@@ -8,15 +8,16 @@
       "name": "*ubuntu-xenial-16.04-amd64-server-*",
       "root-device-type": "ebs"
       },
-      "owners": ["099720109477"],
+#      "owners": ["099720109477"],
+      "owners": ["self"],
       "most_recent": true
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
     "ami_name": "macos{{ timestamp }}",
-     "subnet_id": "subnet-1b66057c",
+     "subnet_id": "subnet-09cdea6e",
      "type":"amazon-ebs",
-     "vpc_id":"__________VPC_______________",
+     "vpc_id":"vpc-eaefde8d",
      "associate_public_ip_address":true
   }],
   "provisioners" :[
