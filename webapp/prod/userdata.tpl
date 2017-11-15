@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-apt-get update -qy
-#apt-get upgrade -y
+apt-get update -q
+apt-get upgrade -y
 apt-get install -y git nginx
 rm /etc/nginx/sites-enabled/default 
 cat > /etc/nginx/conf.d/webapp.conf <<EOF
@@ -16,4 +16,3 @@ git clone https://github.com/d2si/webapp.git /var/webapp
 sed -i "s#everybody#${username} at $HOST#" /var/webapp/index.html
 service nginx restart
 #systemctl restart nginx
-
